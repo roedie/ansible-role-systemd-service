@@ -2,6 +2,9 @@
 
 [Unit]
 Description="{{ systemd_service[item].description | default("Service for " + item) }}"
+{% if systemd_service[item].documentation is defined %}
+Documentation={{ systemd_service[item].documentation }}
+{% endif -%}
 {% if systemd_service[item].wants is defined %}
 Wants={{ systemd_service[item].wants }}
 {% endif -%}
@@ -240,6 +243,15 @@ StandardError={{ systemd_service[item].standard_error }}
 TTYPath={{ systemd_service[item].tty_path }}
 {% endif %}
 
+{% if systemd_service[item].protectsystem is defined %}
+ProtectSystem={{ systemd_service[item].protectsystem }}
+{% endif -%}
+{% if systemd_service[item].protecthome is defined %}
+ProtectHome={{ systemd_service[item].protecthome }}
+{% endif -%}
+{% if systemd_service[item].watchdogsec is defined %}
+WatchdogSec={{ systemd_service[item].watchdogsec }}
+{% endif -%}
 
 [Install]
 {% if systemd_service[item].wanted_by is defined %}

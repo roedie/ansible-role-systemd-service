@@ -5,9 +5,10 @@ systemd_target: {}
 #
 # systemd_service:
 #   service:
-#     service_name: ""  
+#     service_name: ""
 #     enabled: False
 #     description: "Service for {{ key }}"
+#     documentation: ""
 #     after: ""
 #     before: ""
 #     user: ""
@@ -35,6 +36,9 @@ systemd_target: {}
 #     standard_output: ""
 #     standard_error: ""
 #     tty_path: ""
+#     protectsystem: ""
+#     protecthome: ""
+#     watchdogsec: ""
 #     wanted_by: ""
 #     required_by: ""
 #     assert_architecture: []
